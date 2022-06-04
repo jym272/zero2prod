@@ -1,32 +1,28 @@
-struct Deck {
-    cards: Vec<Card>,
+struct StringHello {
+    name: String,
 }
-struct Card {
-    value: u8,
-    suit: String,
+impl StringHello {
+    fn new(name: String) -> StringHello {
+        StringHello { name }
+    }
+    fn add_name(&self, name: String) -> StringHello {
+        StringHello {
+            name: format!("{} {}", self.name, name),
+        }
+    }
+}
+fn main() {
+    let hello = StringHello::new("world".to_string());
+    println!("Hello, {}!", hello.name);
 }
 
-fn main() {
-    let mut deck = Deck { cards: Vec::new() };
-    deck.cards.push(Card {
-        value: 1,
-        suit: "Spades".to_string(),
-    });
-    deck.cards.push(Card {
-        value: 2,
-        suit: "Hearts".to_string(),
-    });
-    deck.cards.push(Card {
-        value: 3,
-        suit: "Clubs".to_string(),
-    });
-    deck.cards.push(Card {
-        value: 4,
-        suit: "Diamonds".to_string(),
-    });
-    deck.cards.push(Card {
-        value: 5,
-        suit: "Spades".to_string(),
-    });
-    println!("Hello, world!");
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_string_hello() {
+        let hello = StringHello::new("world".to_string());
+        assert_eq!(hello.name, "world");
+    }
 }
