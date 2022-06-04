@@ -19,3 +19,8 @@ rustflags = ["-C", "link-arg=-fuse-ld=/path/to/mold"]
 3. If tests pass, it launches the application with cargo run.
 ## Code Coverage
 [tarpaulin](https://github.com/xd009642/tarpaulin)`cargo tarpaulin --ignore-tests`
+
+## Security Vulnerabilities 
+Convenient `cargo` sub-command to check if vulnerabilities have
+been reported for any of the crates in the dependency tree of your project.
+`cargo audit`

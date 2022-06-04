@@ -14,6 +14,8 @@ impl StringHello {
 fn main() {
     let hello = StringHello::new("world".to_string());
     println!("Hello, {}!", hello.name);
+    let hello = hello.add_name("Rust".to_string());
+    println!("Hello, {}!", hello.name);
 }
 
 #[cfg(test)]
