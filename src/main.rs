@@ -1,30 +1,6 @@
-struct StringHello {
-    name: String,
-}
-impl StringHello {
-    fn new(name: String) -> StringHello {
-        StringHello { name }
-    }
-    fn add_name(&self, name: String) -> StringHello {
-        StringHello {
-            name: format!("{} {}", self.name, name),
-        }
-    }
-}
-fn main() {
-    let hello = StringHello::new("world".to_string());
-    println!("Hello, {}!", hello.name);
-    let hello = hello.add_name("Rust".to_string());
-    println!("Hello, {}!", hello.name);
-}
+use zero2prod::run;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_string_hello() {
-        let hello = StringHello::new("world".to_string());
-        assert_eq!(hello.name, "world");
-    }
+#[tokio::main] // or #[tokio::main] //[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    run("127.0.0.1:8080")?.await
 }
