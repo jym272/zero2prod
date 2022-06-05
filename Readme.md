@@ -1,5 +1,5 @@
-## Configuration
-### Linker:
+# Configuration
+## Linker:
 #### Mold as default linker -> [mold](https://github.com/rui314/mold)
 
 Create `.cargo/config.toml` in your project directory with the following:
@@ -24,3 +24,9 @@ rustflags = ["-C", "link-arg=-fuse-ld=/path/to/mold"]
 Convenient `cargo` sub-command to check if vulnerabilities have
 been reported for any of the crates in the dependency tree of your project.
 `cargo audit`
+
+# Database
+We have put the docker run command behind a SKIP_DOCKER flag to make it easy to run migrations
+against an existing Postgres instance without having to tear it down manually and re-create it with
+scripts/init_db.sh. If it exists already the docker image:
+`SKIP_DOCKER=true ./scripts/init_db.sh`
